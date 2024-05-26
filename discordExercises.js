@@ -53,9 +53,20 @@ Descrizione: Scrivi una funzione sumEvenNumbers che prende in input un array di 
 sumEvenNumbers([10, 20, 30, 40]); // 100
 */
 
-function sumEvenNumbers() {
+function sumEvenNumbers(array) {
+    let sum = 0;
+
+    for (i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 0) {
+            sum += array[i];
+        }
+    };
+
+    return sum;
 
 }
+
+console.log(sumEvenNumbers([11, 22, 33, 44]))
 
 /*
 Esercizio 5: Rimuovi duplicati
@@ -66,9 +77,19 @@ suggerimento... includes() potrebbe essere il metodo che fa per te...o forse no?
 es: removeDuplicates([1, 2, 2, 3, 4, 4, 5]); // [1, 2, 3, 4, 5]
 */
 
-function removeDuplicates() {
-  
+function removeDuplicates(array) {
+    let newArray = [];
+
+    for (i = 0; i < array.length; i++) {
+        if (!newArray.includes(array[i])) {
+            newArray.push(array[i]);
+        }
+    };
+
+    return newArray;
 }
+
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5]))
 
 /*
 Esercizio 7: Contare vocali
@@ -79,14 +100,18 @@ countVowels("javascript"); // 3
 
 function countVowels(parola) {
     parola = parola.toLowerCase()
-    const vowels = "aeiou";
+    const vocali = "aeiou";
+    let vocaliParola = [];
     let contatore = 0;
+
     for (i = 0; i < parola.length; i++) {
-        if (vowels.includes(parola[i])) {
+        if (vocali.includes(parola[i]) && !vocaliParola.includes(parola[i])) {
+            vocaliParola.push(parola[i]);
             contatore++;
         };
     };
-    return contatore;
+
+    return `La parola contiene ${contatore} vocali: ${vocaliParola}.`;
 };
 
-console.log(countVowels("MARCO"))
+console.log(countVowels("aiuola"))
